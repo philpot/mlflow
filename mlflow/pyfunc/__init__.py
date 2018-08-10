@@ -275,7 +275,7 @@ def log_model(artifact_path, **kwargs):
         if 'model' in kwargs:
             raise Exception("Unused argument 'model'. log_model creates a new model object")
 
-        save_model(dst_path=local_path, model=Model(artifact_path=artifact_path, run_id=run_id),
+        save_model(dst_path=local_path, loader_module='mlflow.pyfunc', model=Model(artifact_path=artifact_path, run_id=run_id),
                    **kwargs)
         tracking.log_artifacts(local_path, artifact_path)
 
